@@ -20,37 +20,50 @@ WSL并不是一个Linux, 因为他并没有Linux的内核代码. 但是, WSL仍�
 
 **启用WSL**
 
-0. 保证你的Windows 10版本在1903以上.
+0. 保证你的Windows 10版本在1903以上
 
-1. **管理员**身份打开PowerShell, 并运行:
+1. **管理员**身份运行PowerShell, 并运行:
 
     ```powershell
     dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
     dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
     ```
 
-2. 下载内核更新包
+2. **重启系统**，关机后系统会显示正在更新。该过程大约耗时3分钟。
+
+3. 下载内核更新包
 
     下载地址: https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi
 
-3. 使用版本WSL2
+4. 使用版本WSL2
 
     ```powershell
     wsl --set-default-version 2
     ```
 
-4. 下载Linux分发版:
+5. 下载Linux分发版:
 
     1. 在Windows应用商店中选择合适的分发版.
-        - 我们推荐按照自己的喜好选择. 若暂时没有, 我们接下来会使用Ubuntu 20.04LTS 为例子, 但该版本对WSL的兼容性不佳. 使用Ubuntu 18.04也是好的选择.
-    2. 设定用户名和密码.
+        - 我们推荐按照自己的喜好选择. 若暂时没有, 我们接下来会使用 [Ubuntu 20.04LTS](https://www.microsoft.com/zh-cn/p/ubuntu/9nblggh4msv6?activetab=pivot:overviewtab) 为例子, 但该版本对WSL的兼容性不佳. 使用Ubuntu 18.04也是好的选择.
+    2. 从开始菜单或应用商店中启动 Ubuntu
+    3. 按照英文设定用户名和密码
+    4. 配置完成！
 
-5. 安装WIndows Terminal (可选, 但**推荐**)
+6. 安装好之后，如果你需要访问 wsl 的文件，可以在文件管理器中输入`\\wsl$\Ubuntu` （或 `\\wsl$\`）查看 Linux 的文件。建议把 `\\wsl$\Ubuntu\home\<你的用户名>` 路径”固定到快速访问中“（右键该文件夹，选择固定到快速访问中）。`\\wsl$\Ubuntu` 路径是根目录， `\\wsl$\Ubuntu\home\<你的用户名>` 路径是你的用户目录，后文的文件系统一节会详细介绍。
 
-    如果你愿意一直和Powershell原生界面一直打交道, 这一步可以跳过.
+    ![image-20210511204840498](./基础环境准备和基本Linux命令.assets/image-20210511204711602.png)
 
-    在应用商店下载即可. Windows Terminal没有图形化设置界面, 具体怎么使Windows Terminal更好看, 可以先自学, 或者等到之后学习完Json之后配置.
+    
 
+7. 安装 [WIndows Terminal](https://www.microsoft.com/zh-cn/p/windows-terminal/9n0dx20hk701#activetab=pivot:overviewtab) (可选, 但**推荐**)
+
+    如果你愿意一直和 Powershell 原生界面一直打交道, 这一步可以跳过.
+
+    在应用商店下载即可. 安装之后启动，默认终端是 Powershell ，点击窗口左上角的向下箭头，点击 Ubuntu 即可启动 Ubuntu 的命令行
+
+    Windows Terminal没有图形化设置界面, 具体怎么使Windows Terminal 更好看, 可以先百度自学, 或者等到之后学习完 Json 之后配置.
+
+**详细教程可以参考微软官网** https://docs.microsoft.com/zh-cn/windows/wsl/install-win10#step-3---enable-virtual-machine-feature
 ### for Mac
 
 恭喜你! 你已经拥有了一套`Unix-like`系统!
